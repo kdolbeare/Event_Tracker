@@ -1,0 +1,33 @@
+header {
+  background-color: #e68900;
+  width: 100%;
+  height: 100px;
+}
+header a {
+  text-decoration: none;
+  color: #005580;
+}
+body {
+  color: #005580;
+  /*width: 100%;*/
+}
+.logo {
+    font-size: 3em;
+    font-family: Lucida Console;
+    font-style: italic;
+    float: left;
+    padding: 15px;
+}
+
+p {
+  margin-left: 30px;
+  margin-top: 30px;
+  font-size: 1em;
+  font-family: Lucida Console;
+  font-style: italic;
+}
+.buttonDiv , .allButton, .idButton {
+  font-size: 1em;
+  font-family: Lucida Console;
+  font-style: italic;
+}
