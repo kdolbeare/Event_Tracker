@@ -42,13 +42,15 @@ function init() {
 function deleteEvent(e) {
 	e.preventDefault();
 	var id = e.target.getAttribute("eventId");
-	updateData("DELETE","http://localhost:8080/EventTracker/rest/event/" + id);
+	//use this path locally:http://localhost:8080/EventTracker/
+	updateData("DELETE","rest/event/" + id);
 }
 
 function listEventsClicked(e) {
 	e.preventDefault();
 	clearData();
-	getData("http://localhost:8080/EventTracker/rest/events", listEvents);
+	//use this path locally:http://localhost:8080/EventTracker/
+	getData("rest/events", listEvents);
 }
 function listEvents(events) {
 	// var body = document.querySelector("body");
@@ -76,7 +78,8 @@ function eventByIdClicked(e) {
 	div.innerHTML="";
 	if (parseInt(input.value)) {
 	clearData();
-	getData("http://localhost:8080/EventTracker/rest/event/" + input.value, getEventById);
+	//use this path locally:http://localhost:8080/EventTracker/
+	getData("rest/event/" + input.value, getEventById);
 	}
  else {
 	 clearData();
