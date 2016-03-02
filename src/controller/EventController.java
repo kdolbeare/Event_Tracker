@@ -56,7 +56,7 @@ public class EventController
 	}
 	
 	@ResponseBody
-	@RequestMapping(path = "event/{id}", method = RequestMethod.PUT)
+	@RequestMapping(path = "event", method = RequestMethod.PUT)
 	public void createEvent(@RequestBody Event event) 
 	{
 		System.out.println(event);

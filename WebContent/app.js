@@ -37,6 +37,8 @@ function init() {
 	form.allEvents.addEventListener("click", listEventsClicked);
 	var form1 = document.idButton;
 	form1.eventById.addEventListener("click", eventByIdClicked);
+	var form2 = document.addButton;
+	form2.addEvent.addEventListener("click", addEvent);
 }
 
 function deleteEvent(e) {
@@ -46,6 +48,65 @@ function deleteEvent(e) {
 	updateData("DELETE","rest/event/" + id);
 }
 
+function addEvent(e) {
+	e.preventDefault();
+	var body = document.querySelector("body");
+	var eventForm = document.createElement("form");
+	eventForm.setAttribute("id", "eventForm");
+
+	var eventDate = document.createElement("input");
+	eventDate.type = "text";
+	eventDate.name = "eventDate";
+	eventDate.placeholder = "weigh-in date";
+	eventForm.appendChild(eventDate);
+
+	var weight = document.createElement("input");
+	weight.type = "text";
+	weight.name = "weight";
+	weight.placeholder = "weight";
+	eventForm.appendChild(weight);
+
+	var bodyfatPct = document.createElement("input");
+	bodyfatPct.type = "text";
+	bodyfatPct.name = "bodyfatPct";
+	bodyfatPct.placeholder = "bodyfat percentage";
+	eventForm.appendChild(bodyfatPct);
+
+	var musclemassPct = document.createElement("input");
+	musclemassPct.type = "text";
+	musclemassPct.name = "musclemassPct";
+	musclemassPct.placeholder = "musclemass percentage";
+	eventForm.appendChild(musclemassPct);
+
+	var waterPct = document.createElement("input");
+	waterPct.type = "text";
+	waterPct.name = "waterPct";
+	waterPct.placeholder = "water percentage";
+	eventForm.appendChild(waterPct);
+
+	var comment = document.createElement("input");
+	comment.type = "text";
+	comment.name = "comment";
+	comment.placeholder = "comments";
+	eventForm.appendChild(comment);
+
+	var submit = document.createElement("input");
+	submit.type = "submit";
+	submit.value = "Add";
+	eventForm.appendChild(submit);
+	body.appendChild(eventForm);
+	submit.addEventListener("click", function(e) {
+		e.preventDefault();
+		var obj = {eventDate:eventDate.value, weight:weight.value, bodyfatPct:bodyfatPct.value, musclemassPct:musclemassPct.value, waterPct:waterPct.value, comment:comment.value};
+		updateData("PUT","rest/event", obj);
+		var remove = document.getElementById("eventForm");
+		if (remove) {
+			console.log(remove.parentNode + "in if");
+			remove.parentNode.removeChild(remove);
+		}
+	});
+
+}
 function listEventsClicked(e) {
 	e.preventDefault();
 	clearData();
